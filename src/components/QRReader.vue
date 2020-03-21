@@ -1,12 +1,17 @@
 <template>
-  <div>
-    <p class="error">{{ error }}</p>
+  <div class="container">
+    <div class="row">
+      <div class="column scanner">
+        <div><qrcode-stream @decode="onDecode" @init="onInit" /></div>
+      </div>
+      <div class="column">
+        <p class="error">{{ error }}</p>
 
-    <p class="decode-result">
-      Last result: <b>{{ result }}</b>
-    </p>
-
-    <qrcode-stream @decode="onDecode" @init="onInit" />
+        <p class="decode-result">
+          Last result: <b>{{ result }}</b>
+        </p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -52,6 +57,21 @@ export default {
 </script>
 
 <style scoped>
+.container {
+  display: flex;
+}
+.row {
+  display: flex;
+}
+
+.column {
+  flex: 50%;
+}
+
+.scanner {
+  width: 33.3%;
+}
+
 .error {
   font-weight: bold;
   color: red;
